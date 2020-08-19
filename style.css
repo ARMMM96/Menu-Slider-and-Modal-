@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 :root {
-  --modal-duration: 1s;
+  --modal-duration: 1.5s;
   --primary-color: #30336b;
-  --secondary-color: #be2edd;
+  --secondary-color: #bd2edd77;
 }
 
 * {
@@ -12,6 +12,12 @@
 body {
   font-family: 'Lato', sans-serif;
   margin: 0;
+  transition: transform 0.3s ease;
+}
+
+body.show-nav {
+  /* Width of the nav */
+  transform: translatex(250px);
 }
 
 nav {
@@ -21,8 +27,8 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
-  width: 200px;
-  height: 100vh;
+  width: 250px;
+  height: 100%;
   z-index: 100;
   transform: translateX(-100%);
 }
@@ -33,8 +39,8 @@ nav .logo {
 }
 
 nav .logo img {
-  height: 75px;
-  width: 75px;
+  height: 150px;
+  width: 150px;
   border-radius: 50%;
 }
 
@@ -57,7 +63,9 @@ nav ul li a {
   color: #ffffff;
   text-decoration: none;
 }
-
+nav ul li:hover {
+  background-color: #bd2edd77;
+}
 nav ul li a:hover {
   text-decoration: underline;
 }
@@ -120,6 +128,10 @@ button:focus {
   bottom: 0;
 }
 
+.modal-container.show-modal {
+  display: block;
+}
+
 .modal {
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -130,6 +142,8 @@ button:focus {
   transform: translate(-50%, -50%);
   max-width: 100%;
   width: 400px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
 }
 
 .modal-header {
@@ -165,4 +179,19 @@ button:focus {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.submit-btn {
+  margin: 10px 0;
+  width: 100%;
+  background: rgb(153, 48, 153) !important;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
